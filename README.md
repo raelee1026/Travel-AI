@@ -2,8 +2,10 @@
 
 ## Getting Started
 ### 1. **Clone the repository** (if needed):
-   git clone <repository-url>
-   cd <project-directory>
+   ```bash
+   git clone <https://github.com/raelee1026/ai-travel-planner.git>
+   cd <ai-travel-planner>
+   ```
 
 ### 2. **Install dependencies:**
     npm install
