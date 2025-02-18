@@ -4,6 +4,7 @@ import { useState } from 'react'
 import {Input} from '@/components/ui/input'
 import { SelectBudgetOptions, SelectTravelesList } from '@/constants/options';
 import { Button } from '@/components/ui/button';
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
 function CreateTrip() {
     const [place, setPlace] = useState();
@@ -27,6 +28,10 @@ function CreateTrip() {
             alert('Please enter valid number of days')
             return;
         }
+        if(!formData?.destination || !formData?.noOfDays || !formData?.budget || !formData?.traveler){
+            alert('Please fill all the fields') 
+            return;
+        }
         console.log(formData); 
     }
 
@@ -39,12 +44,22 @@ function CreateTrip() {
             <div>
                 <h2 className='text-xl my-3 font-medium'>What is destination of choice?</h2>
                 {/* <GooglePlacesAutocomplete apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}></GooglePlacesAutocomplete> */}
+                {/* <GooglePlacesAutocomplete
+                    apiKey={import.meta.env.VITE_GOOGLE_PLACE_API_KEY}
+                    selectProps={{
+                    onChange: (place) => console.log(place),
+                    }}
+                /> */}
                 <Input placeholder={'Ex:Taiwan'} type="default" onChange={(e)=>handleInputChange('destination', e.target.value)}></Input>
             </div>
             <div>
                 <h2 className='text-xl my-3 font-medium'>How many days?</h2>
                 <Input placeholder={'Ex:3'} type="number" onChange={(e)=>handleInputChange('noOfDays', e.target.value)}></Input>
             </div>
+            {/* <div>
+                <h2 className='text-xl my-3 font-medium'>What are your travel dates?</h2>
+                <Input type="date" onChange={(e)=>handleInputChange('travelDates', e.target.value)}></Input>
+            </div> */}
 
             <div>
                 <h2 className='text-xl my-3 font-medium'>What is your budget?</h2>
@@ -66,7 +81,7 @@ function CreateTrip() {
 
             <div>
                 <h2 className='text-xl my-3 font-medium'>Who do you plan traveling with?</h2>
-                <div className='grid grid-cols-3 gap-5 mt-5'>
+                <div className='grid grid-cols-2 gap-5 mt-5'>
                     {SelectTravelesList.map((item, index) => (
                         <div key={index} 
                         onClick={()=>handleInputChange('traveler', item.people)}

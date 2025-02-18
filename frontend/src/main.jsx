@@ -4,6 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import CreateTrip from './create-trip/index.jsx'
+import Chat from './chat/index.jsx'
 import Header from './components/custom/Header.jsx'
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path:'/create-trip',
     element: <CreateTrip/>
+  },
+  {
+    path:'/chat',
+    element: <Chat/>
   }
 ])
 

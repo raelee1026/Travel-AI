@@ -7,7 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      'react-native': 'react-native-web',
+      // 'react-native': 'react-native-web',
     },
   },
 })
