@@ -37,33 +37,55 @@ const GeminiChat = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-4">
-      <Card>
-        <CardContent>
-          <div className="h-96 overflow-y-auto mb-4 border p-2 rounded">
-            {messages.map((msg, index) => (
-              <div key={index} className={`mb-2 ${msg.role === "user" ? "text-right" : "text-left"}`}>
-                {/* <span className={`inline-block p-2 rounded-lg ${msg.role === "user" ? "bg-blue-500 text-white" : "bg-gray-200"}`}>
-                  {msg.content}
-                </span> */}
-                <span className={`inline-block p-2 rounded-lg ${msg.role === "user" ? "bg-blue-500 text-white" : "bg-gray-200"}`}>
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
-                </span>
+    <div>
+      <p className="p-4 text-lg">
+      Engage in a conversation with our advanced travel customization AI to gain insights and plan a trip tailored to your preferences.
+      </p>
+
+      <div className="h-screen flex flex-col bg-gray-100">
+        <div className="flex-1 overflow-y-auto p-4">
+          <Card className="h-full">
+            <CardContent className="h-full flex flex-col">
+              <div className="flex-1 overflow-y-auto border rounded-lg p-4 bg-white">
+                {messages.map((msg, index) => (
+                  <div
+                    key={index}
+                    className={`mb-2 ${
+                      msg.role === "user" ? "text-right" : "text-left"
+                    }`}
+                  >
+                    <span
+                      className={`inline-block p-3 rounded-lg max-w-[75%] ${
+                        msg.role === "user"
+                          ? "bg-blue-500 text-white"
+                          : "bg-gray-200"
+                      }`}
+                    >
+                      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                        {msg.content}
+                      </ReactMarkdown>
+                    </span>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="flex space-x-2">
-            <Input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask Gemini..."
-            />
-            <Button onClick={sendMessage}>Send</Button>
-          </div>
-        </CardContent>
-      </Card>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="p-4 bg-white border-t flex items-center space-x-2">
+          <Input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            placeholder="Ask Gemini..."
+            className="flex-1"
+          />
+          <Button onClick={sendMessage}>Send</Button>
+        </div>
+      </div>
+
     </div>
+
   );
 };
 

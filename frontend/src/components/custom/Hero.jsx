@@ -12,6 +12,10 @@ function Hero() {
         <Link to='/create-trip'>
             <Button>Get Started</Button>
         </Link>
+
+        <Link to='/chat'>
+            <Button>Chat with your AI assistant, customic for travel</Button>
+        </Link>
         
     </div>
   )
