@@ -25,10 +25,16 @@ const GeminiChat = () => {
       });
       const data = await response.json();
       
+      // const botMessage = {
+      //   role: "bot",
+      //   content: data.candidates?.[0]?.content?.parts?.[0]?.response || "No response"
+      // };
+
       const botMessage = {
         role: "bot",
-        content: data.candidates?.[0]?.content?.parts?.[0]?.text || "No response"
+        content: data.response || "No response"
       };
+      
       
       setMessages([...messages, userMessage, botMessage]);
     } catch (error) {
