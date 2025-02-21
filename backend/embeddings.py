@@ -15,8 +15,8 @@ os.makedirs(DATA_DIR, exist_ok=True)
 with open(INPUT_FILE, "r", encoding="utf-8") as f:
     tourism_data = json.load(f)
 
-# Limit dataset to first 100 entries
-tourism_data = tourism_data[:100]
+# Limit dataset to first 1000 entries
+tourism_data = tourism_data[:1000]
 
 # Initialize embedding model
 embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
