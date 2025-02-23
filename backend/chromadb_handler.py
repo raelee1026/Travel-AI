@@ -26,7 +26,7 @@ def embed_query(query):
 #     retrieved_docs = search_results.get("documents", [[]])[0]  # Top N documents
 #     return retrieved_docs
 
-def retrieve_top_n(query, n=3):
+def retrieve_top_n(query, n=5):
     """ Perform semantic search in ChromaDB and retrieve top N relevant documents. """
     search_results = collection.query(query_texts=[query], n_results=n)
     retrieved_docs = search_results.get("documents", [[]])[0]  # Top N documents

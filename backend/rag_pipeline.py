@@ -58,7 +58,7 @@ def generate_response(query):
     query_embedding = embed_query(query)
 
     # Retrieve relevant documents from ChromaDB
-    retrieved_docs = retrieve_top_n(query, n=3) # Top 3 relevant documents
+    retrieved_docs = retrieve_top_n(query, n=5) # Top 5 relevant documents
     print("retrieved_docs", retrieved_docs)
 
     # Format retrieved context
