@@ -25,11 +25,14 @@ const GeminiChat = () => {
       });
       const data = await response.json();
       
+      // for Gemini API
       // const botMessage = {
       //   role: "bot",
       //   content: data.candidates?.[0]?.content?.parts?.[0]?.response || "No response"
       // };
 
+
+      // for RAG
       const botMessage = {
         role: "bot",
         content: data.response || "No response"
@@ -83,7 +86,7 @@ const GeminiChat = () => {
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Ask Gemini..."
+            placeholder="Ex: Plan a trip to Bangkok for 5 days"
             className="flex-1"
           />
           <Button onClick={sendMessage}>Send</Button>
