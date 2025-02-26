@@ -1,8 +1,10 @@
 # **AI Travel Planner**
-
 This project is an AI-powered travel recommendation application that uses a **RAG (Retrieval-Augmented Generation) pipeline** combined with **Gemini API** to provide travel suggestions and answers to user queries.
 
 ---
+
+## [**Presentation Slide**](https://docs.google.com/presentation/d/1PYV7bg0mPHk4-wT7c6qeDQx_GKEGewhp5bxypEsul24/edit?usp=sharing)
+
 
 ## **Project Structure**
 
@@ -14,13 +16,17 @@ ai-travel-planner/
 │   ├── chromadb_handler.py    # ChromaDB integration for semantic search
 │   ├── embeddings.py          # Handles embedding generation and storage
 │   ├── rag_pipeline.py        # Retrieval-Augmented Generation pipeline
-│   └── requirements.txt       # Python dependencies
+│   ├── requirements.txt       # Python dependencies
+│   ├── check_embeddings.py    # Script to check embeddings
+│   ├── debug_app.py           # Debugging application
+│   ├── extract_data.py        # Data extraction script
+│   ├── fetch_data.py           # Script to fetch data
 │
 └── frontend/                  # Vite + React Frontend for user interactions
     ├── src/
     │   └── components/        # React components for chat and UI
     ├── package.json           # Node.js dependencies
-    └── public/                # Public assets (e.g., index.html)
+    └── public/                # Public assets (e.g., index.html, images, and other static files)
 ```
 
 ---
