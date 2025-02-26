@@ -4,7 +4,7 @@ This project is an AI-powered travel recommendation application that uses a **RA
 ---
 
 ## [**Presentation Slide**](https://docs.google.com/presentation/d/1PYV7bg0mPHk4-wT7c6qeDQx_GKEGewhp5bxypEsul24/edit?usp=sharing)
-
+---
 
 ## **Project Structure**
 
