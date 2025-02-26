@@ -22,15 +22,15 @@ CONVERSATION_HISTORY_FILE = "conversation_history.json"
 GEMINI_API_URL = f"https://generativelanguage.googleapis.com/v1/models/gemini-2.0-flash:generateText?key={API_KEY}"
 
 def load_conversation_history():
-    """讀取對話歷史，若檔案不存在則回傳空列表"""
+    """load conversation history from json file"""
     if os.path.exists(CONVERSATION_HISTORY_FILE):
         with open(CONVERSATION_HISTORY_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
     return []
 
-# 保存對話歷史
+# save conversation history in json file
 def save_conversation_history(history):
-    """將對話歷史保存至 JSON 檔案"""
+    """save conversation history to json file"""
     with open(CONVERSATION_HISTORY_FILE, "w", encoding="utf-8") as f:
         json.dump(history, f, indent=4, ensure_ascii=False)
 
@@ -47,7 +47,7 @@ def gemini_chat():
         
         conversation_history = load_conversation_history()
 
-        history_prompt = "\n".join(conversation_history[-5:])  # 只取最後 5 筆對話
+        history_prompt = "\n".join(conversation_history[-2:])  # Get last 2 turns of conversation history
         prompt = f"""
         You are a travel agent AI. Continue the conversation considering the context below:
 
@@ -63,11 +63,11 @@ def gemini_chat():
         conversation_history.append(f"User: {user_input}")
         conversation_history.append(f"AI: {ai_response}")
 
-        # 限制對話歷史長度，最多保留 20 筆
+        # limit conversation history to 20
         if len(conversation_history) > 20:
             conversation_history = conversation_history[-20:]
 
-        # 保存對話歷史
+        # Save Conversation History
         save_conversation_history(conversation_history)
 
         # Return AI-generated Response
