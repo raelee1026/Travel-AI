@@ -52,7 +52,7 @@ ai-travel-planner/
 ### **1. Clone the Repository**
 
 ```bash
-git clone https://github.com/raelee1026/ai-travel-planner.git
+git clone https://github.com/raelee1026/Travel-AI.git
 cd ai-travel-planner
 ```
 
