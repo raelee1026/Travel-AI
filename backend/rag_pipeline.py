@@ -90,6 +90,9 @@ def format_prompt(query, retrieved_context):
     ### **Relevant Information (if available):**
     {retrieved_context if retrieved_context.strip() else "No relevant travel data found. Answer using your own knowledge."}
 
+   ### **Response Length:**
+   - Ensure the response is within **300 words**.
+   - For detailed itineraries, provide a **maximum of 7 days**.
     Now, generate a clear, accurate, and contextually relevant response.
     """
 
