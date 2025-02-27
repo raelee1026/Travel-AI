@@ -1,14 +1,56 @@
-import { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { useLocation } from "react-router-dom";
 
 const GeminiChat = () => {
+  const location = useLocation();
+  const initialPrompt = location.state?.initialPrompt || "";
+
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const API_KEY = "YOUR_GEMINI_API_KEY";
+
+  const hasSentInitialMessage = useRef(false); // to prevent sending multiple initial messages
+
+  //initial prompt
+  useEffect(() => {
+    if (initialPrompt && !hasSentInitialMessage.current) {
+      hasSentInitialMessage.current = true;
+      const initialUserMessage = {
+        role: "user",
+        content: initialPrompt,
+      };
+      // setMessages([initialUserMessage]);
+  
+      // Send initial message to the bot
+      const sendInitialMessage = async () => {
+        try {
+          const response = await fetch("http://127.0.0.1:5000/api/gemini", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ input: initialPrompt }),
+          });
+          const data = await response.json();
+  
+          const botMessage = {
+            role: "bot",
+            content: data.response || "No response",
+          };
+  
+          setMessages((prev) => [...prev, botMessage]);
+        } catch (error) {
+          console.error("Error fetching initial response:", error);
+        }
+      };
+  
+      sendInitialMessage();
+    }
+  }, [initialPrompt]);
+  
 
   const sendMessage = async () => {
     if (!input.trim()) return;

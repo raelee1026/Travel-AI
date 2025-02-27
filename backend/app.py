@@ -47,7 +47,7 @@ def gemini_chat():
         
         conversation_history = load_conversation_history()
 
-        history_prompt = "\n".join(conversation_history[-3:])  # Get last 3 turns of conversation history
+        history_prompt = "\n".join(conversation_history[-4:])  # Get last 4 turns of conversation history
         prompt = f"""
         You are a travel agent AI. Continue the conversation considering the context below:
 

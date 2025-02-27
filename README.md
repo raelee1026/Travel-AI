@@ -1,9 +1,9 @@
-# **AI Travel Planner**
+# **Travel AI**
 This project is an AI-powered travel recommendation application that uses a **RAG (Retrieval-Augmented Generation) pipeline** combined with **Gemini API** to provide travel suggestions and answers to user queries.
 
 ---
 
-## [**Presentation Slide**](https://docs.google.com/presentation/d/1PYV7bg0mPHk4-wT7c6qeDQx_GKEGewhp5bxypEsul24/edit?usp=sharing)
+## [**Presentation Slide**](https://www.canva.com/design/DAGgOWBO43g/ktGADUo4lgwIxBQtGWGQmQ/view?utm_content=DAGgOWBO43g&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8e6b562bdf)
 ---
 
 ## **Project Structure**

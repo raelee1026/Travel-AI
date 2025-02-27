@@ -13,9 +13,9 @@ function Hero() {
             <Button>Get Started</Button>
         </Link>
 
-        <Link to='/chat'>
+        {/* <Link to='/chat'>
             <Button>Chat with your AI assistant, customic for travel</Button>
-        </Link>
+        </Link> */}
         
     </div>
   )

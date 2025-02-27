@@ -4,9 +4,11 @@ import { useState } from 'react'
 import {Input} from '@/components/ui/input'
 import { SelectBudgetOptions, SelectTravelesList } from '@/constants/options';
 import { Button } from '@/components/ui/button';
+import { Link, useNavigate } from 'react-router-dom';
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 
 function CreateTrip() {
+    const navigate = useNavigate();
     const [place, setPlace] = useState();
 
     const [formData, setFormData] = useState([]);
@@ -28,12 +30,29 @@ function CreateTrip() {
             alert('Please enter valid number of days')
             return;
         }
-        if(!formData?.destination || !formData?.noOfDays || !formData?.budget || !formData?.traveler){
+        if(!formData?.destination || !formData?.noOfDays || !formData?.travelDate || !formData?.budget || !formData?.traveler || !formData?.info){
             alert('Please fill all the fields') 
             return;
         }
         console.log(formData); 
-    }
+
+        const prompt = `
+        You are an expert travel agent AI. Plan a trip with the following details:
+
+        Destination: ${formData.destination}
+        Number of Days: ${formData.noOfDays}
+        Travel Date: ${formData.travelDate}
+        Budget: ${formData.budget}
+        Number of Travelers: ${formData.traveler}
+        Additional Information: ${formData.info}
+
+        Please provide a detailed itinerary, including daily activities, accommodations, and travel tips.
+    `;
+
+    console.log(prompt);
+    // sent the prompt to the chat page
+    navigate('/chat', { state: { initialPrompt: prompt } });
+    };
 
   return (
     <div className='sm:px-10 md:px-32 lg:px-56 xl:px-10 px-5 mt-10'>
@@ -52,14 +71,17 @@ function CreateTrip() {
                 /> */}
                 <Input placeholder={'Ex:Taiwan'} type="default" onChange={(e)=>handleInputChange('destination', e.target.value)}></Input>
             </div>
+
+            <div>
+                <h2 className='text-xl my-3 font-medium'>When are you leaving?</h2>
+                <Input type="date" onChange={(e)=>handleInputChange('travelDate', e.target.value)}></Input>
+            </div>
+
             <div>
                 <h2 className='text-xl my-3 font-medium'>How many days?</h2>
                 <Input placeholder={'Ex:3'} type="number" onChange={(e)=>handleInputChange('noOfDays', e.target.value)}></Input>
             </div>
-            {/* <div>
-                <h2 className='text-xl my-3 font-medium'>What are your travel dates?</h2>
-                <Input type="date" onChange={(e)=>handleInputChange('travelDates', e.target.value)}></Input>
-            </div> */}
+
 
             <div>
                 <h2 className='text-xl my-3 font-medium'>What is your budget?</h2>
@@ -96,11 +118,18 @@ function CreateTrip() {
                 </div>
 
             </div>
+
+            <div>
+                <h2 className='text-xl my-3 font-medium'>Any more Information?(necessary)</h2>
+                <Input placeholder={'Ex: one of us is vegetarian'} type="default" onChange={(e)=>handleInputChange('info', e.target.value)}></Input>
+            </div>
+
         </div>
 
         <div className='my-10 justify-end flex'>
             <Button onClick={OnGenerateTrip}>Generate Trip</Button>
         </div>
+
         
 
     </div>
