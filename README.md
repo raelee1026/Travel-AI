@@ -3,6 +3,10 @@ This project is an AI-powered travel recommendation application that uses a **RA
 
 ---
 
+## **[Demo Video](https://youtu.be/ey3BswBJIlE?si=knBOVUfLSA4Oulps)**
+
+---
+
 ## **Project Structure**
 
 ```
