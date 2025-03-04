@@ -3,9 +3,6 @@ This project is an AI-powered travel recommendation application that uses a **RA
 
 ---
 
-## [**Presentation Slide**](https://www.canva.com/design/DAGgOWBO43g/ktGADUo4lgwIxBQtGWGQmQ/view?utm_content=DAGgOWBO43g&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h8e6b562bdf)
----
-
 ## **Project Structure**
 
 ```
